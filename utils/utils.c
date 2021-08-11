@@ -6,7 +6,7 @@
 /*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 16:05:58 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/09 16:16:10 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/10 14:59:23 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,25 @@ void	*ft_calloc(size_t count, size_t size)
 	}
 	return (ptr);
 }
+
+// void	ft_lstadd_back(t_philo **alst, t_philo *new)
+// {
+// 	t_philo	*temp;
+
+// 	if (*alst == 0)
+// 	{
+// 		*alst = new;
+// 		return ;
+// 	}
+// 	temp = *alst;
+// 	while (temp)
+// 	{
+// 		if (temp->next == 0)
+// 		{
+// 			temp->next = new;
+// 			return ;
+// 		}
+// 		temp = temp->next;
+// 	}
+// 	return ;
+// }
