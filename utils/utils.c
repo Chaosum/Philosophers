@@ -6,11 +6,23 @@
 /*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 16:05:58 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/10 14:59:23 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/12 14:59:48 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+
+// long int	get_timestamp(t_philo *philo)
+// {
+// 	long int	time_sec;
+// 	long int	time_usec;
+// 	long int	time;
+
+// 	time_sec = ((philo->timestamp.tv_sec - philo->prms->timestamp.tv_sec));
+// 	time_usec = ((philo->timestamp.tv_usec - philo->prms->timestamp.tv_usec));
+// 	time = time_sec * 1000 + time_usec / 1000;
+// 	return (time);
+// }
 
 int	ft_isdigit(int c)
 {
@@ -61,25 +73,3 @@ void	*ft_calloc(size_t count, size_t size)
 	}
 	return (ptr);
 }
-
-// void	ft_lstadd_back(t_philo **alst, t_philo *new)
-// {
-// 	t_philo	*temp;
-
-// 	if (*alst == 0)
-// 	{
-// 		*alst = new;
-// 		return ;
-// 	}
-// 	temp = *alst;
-// 	while (temp)
-// 	{
-// 		if (temp->next == 0)
-// 		{
-// 			temp->next = new;
-// 			return ;
-// 		}
-// 		temp = temp->next;
-// 	}
-// 	return ;
-// }

@@ -1,12 +1,16 @@
 FOLDER_UTILS		= utils
 
+FOLDER_ROUTINE		= routine
+
 SRCS				= philo.c
 
-SRCS_UTILS			= ${addprefix ${FOLDER_UTILS}/,error_checking.c utils.c}
+SRCS_UTILS			= ${addprefix ${FOLDER_UTILS}/,error_checking.c utils.c memory_utils.c}
 
-OBJS				= ${SRCS:.c=.o} ${SRCS_UTILS:.c=.o}
+SRCS_ROUTINE		= ${addprefix ${FOLDER_ROUTINE}/,routine_init.c routine_eat.c routine_sleep.c routine_think.c}
 
-INCLUDES			= philo.h philo_struct.h ${FOLDER_UTILS}/utils.h
+OBJS				= ${SRCS:.c=.o} ${SRCS_UTILS:.c=.o} ${SRCS_ROUTINE:.c=.o}
+
+INCLUDES			= philo.h philo_struct.h ${FOLDER_UTILS}/utils.h ${FOLDER_ROUTINE}/routine.h
 
 NAME				= philo
 
@@ -27,7 +31,7 @@ ${NAME}:	${OBJS}
 ${OBJS}:	${INCLUDES}
 
 clean:
-			@rm -f *.o
+			@rm -f *.o ${FOLDER_UTILS}/*.o ${FOLDER_ROUTINE}/*.o
 			@echo files cleaned !
 
 fclean:		clean

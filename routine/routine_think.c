@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   routine_think.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 14:40:07 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/12 12:36:26 by matthieu         ###   ########.fr       */
+/*   Created: 2021/08/12 12:41:38 by matthieu          #+#    #+#             */
+/*   Updated: 2021/08/13 12:12:56 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "../philo.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <pthread.h>
-# include <sys/time.h>
-# include <string.h>
-
-# include "philo_struct.h"
-# include "./utils/utils.h"
-# include "./routine/routine.h"
-
-/* philo.c */
-int	main(int ac, char **av);
-
-#endif
+void	routine_think(t_philo *philo)
+{
+	gettimeofday(&philo->timestamp, NULL);
+	printf("|%lds%ld\t|%d\tis thinking\n",
+		(philo->timestamp.tv_sec - philo->prms->timestamp.tv_sec),
+		(philo->timestamp.tv_usec) / 1000,
+		philo->philo_nbr);
+	philo->current_state = 1;
+}

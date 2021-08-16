@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   memory_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 14:40:07 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/12 12:36:26 by matthieu         ###   ########.fr       */
+/*   Created: 2021/08/12 12:37:43 by matthieu          #+#    #+#             */
+/*   Updated: 2021/08/12 12:39:04 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "../philo.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <pthread.h>
-# include <sys/time.h>
-# include <string.h>
+void	free_mutex(t_philo **philo)
+{
+	t_philo	**temp;
+	int		i;
 
-# include "philo_struct.h"
-# include "./utils/utils.h"
-# include "./routine/routine.h"
-
-/* philo.c */
-int	main(int ac, char **av);
-
-#endif
+	i = 0;
+	temp = philo;
+	while (temp[i])
+	{
+		pthread_mutex_destroy(&temp[i]->right_fork);
+		i++;
+	}
+}
