@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_checking.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 16:05:54 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/12 12:40:00 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/16 18:04:15 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	args_reminder(void)
 {
-	printf("|\t## ARGS SHOULD BE AS FOLLOWS ##\n");
-	printf("|1st arg\t= number_of_philosophers\n");
-	printf("|2nd arg\t= time_to_die - in  miliseconds\n");
-	printf("|3rd arg\t= time_to_eat - in miliseconds\n");
-	printf("|4th arg\t= time_to_sleep - in miliseconds\n");
-	printf("|5th arg\t= number_of_times_each_philosopher_must_eat(optional)\n");
+	static const char	*usage;
+
+	usage = "|\t## ARGS SHOULD BE AS FOLLOWS ##\n"
+		"|1st arg\t= number_of_philosophers\n"
+		"|2nd arg\t= time_to_die - in  miliseconds\n"
+		"|3rd arg\t= time_to_eat - in miliseconds\n"
+		"|4th arg\t= time_to_sleep - in miliseconds\n"
+		"|5th arg\t= number_of_times_each_philosopher_must_eat(optional)\n";
+	printf("%s", usage);
 }
 
 int	check_philo_arg_value(char **av)

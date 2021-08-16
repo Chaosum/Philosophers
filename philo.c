@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:39:44 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/12 14:49:07 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/16 21:49:06 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	philo_error_and_init_params(int ac, t_philo_prms *prms, char **av)
 	if (prms->time_to_sleep == -1)
 		ft_params_error("Error\nWrong time_to_sleep value\n", &error);
 	if (ac == 5)
-		prms->nbr_time_philo_must_eat = 1;
+		prms->nbr_time_philo_must_eat = 0;
 	else
 		prms->nbr_time_philo_must_eat = ft_atoi(av[5]);
 	if (prms->nbr_time_philo_must_eat == -1)
@@ -52,5 +52,5 @@ int	main(int ac, char **av)
 		return (1);
 	if (init_philo(&philo_params))
 		return (1);
-	usleep(10000000);
+	while (1);
 }
