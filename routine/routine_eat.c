@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine_eat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 12:42:53 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/16 21:06:48 by mservage         ###   ########.fr       */
+/*   Updated: 2021/08/17 14:23:10 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	routine_eat(t_philo *philo)
 	}
 	gettimeofday(&philo->timestamp, NULL);
 	philo->last_time_eat = philo->timestamp;
-	printf("|%d%dms\t|%d\tis eating\n",
-		(int)(philo->timestamp.tv_sec - philo->prms->timestamp.tv_sec),
-		(int)((philo->timestamp.tv_usec) / 1000),
-		philo->philo_nbr);
-	philo->current_state = 2;
+	printf("|%ldms\t|%d\tis eating\n",
+		ft_get_time(philo->prms, philo->timestamp), philo->philo_nbr);
 	usleep(philo->prms->time_to_eat * 1000);
+	philo->current_state = 2;
+	if (philo->prms->nbr_time_philo_must_eat)
+		philo->nbr_time_eat++;
 	pthread_mutex_unlock(&philo->left_fork);
 	pthread_mutex_unlock(&philo->right_fork);
 }
@@ -50,8 +50,6 @@ void	routine_eat(t_philo *philo)
 void	philo_grab_fork(t_philo *philo)
 {
 	gettimeofday(&philo->timestamp, NULL);
-	printf("|%d%dms\t|%d\thas taken a fork\n",
-		(int)(philo->timestamp.tv_sec - philo->prms->timestamp.tv_sec),
-		(int)((philo->timestamp.tv_usec) / 1000),
-		philo->philo_nbr);
+	printf("|%ldms\t|%d\thas taken a fork\n",
+		ft_get_time(philo->prms, philo->timestamp), philo->philo_nbr);
 }

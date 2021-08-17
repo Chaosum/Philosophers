@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 12:35:21 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/16 19:11:15 by mservage         ###   ########.fr       */
+/*   Updated: 2021/08/17 14:21:06 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 int		init_philo_struct(t_philo_prms *prms, int i);
 void	*ft_routine(void *args);
 int		init_philo(t_philo_prms *prms);
+long	ft_get_time(t_philo_prms *prms, struct timeval current_time);
+
 
 /* routine_eat.c */
 void	routine_eat(t_philo *philo);

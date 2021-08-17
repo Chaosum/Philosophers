@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:39:44 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/16 21:49:06 by mservage         ###   ########.fr       */
+/*   Updated: 2021/08/17 14:00:28 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	philo_error_and_init_params(int ac, t_philo_prms *prms, char **av)
 		ft_params_error("Error\nWrong time philo must eat value\n", &error);
 	prms->nb_forks = prms->nbr_philo;
 	prms->philo = NULL;
+	prms->dead = 0;
 	if (error)
 		args_reminder();
 	return (error);
@@ -52,5 +53,4 @@ int	main(int ac, char **av)
 		return (1);
 	if (init_philo(&philo_params))
 		return (1);
-	while (1);
 }

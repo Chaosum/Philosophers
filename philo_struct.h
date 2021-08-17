@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 15:20:29 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/16 21:11:30 by mservage         ###   ########.fr       */
+/*   Updated: 2021/08/17 13:50:50 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_philo_prms
 	long				time_to_sleep;
 	int					nbr_time_philo_must_eat;
 	int					nb_forks;
+	int					dead;
+	int					eat;
 	struct timeval		timestamp;
 	t_philo				**philo;
 }		t_philo_prms;
