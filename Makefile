@@ -16,7 +16,7 @@ NAME				= philo
 
 CC					= gcc
 
-CFLAGS				= #-g3 -fsanitize=address -Wall -Wextra -Werror
+CFLAGS				=  -Wall -Wextra -Werror #-g3 -fsanitize=address
 
 all:		${NAME}
 

@@ -6,7 +6,7 @@
 /*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 12:41:04 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/17 14:42:08 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/17 17:10:42 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,13 @@ int	check_if_dead(t_philo_prms *prms, int i, struct timeval current_time)
 	{
 		printf("|%ldms\t|%d\tdied\n",
 			ft_get_time(prms, current_time), i + 1);
-		prms->philo[i]->current_state = 0;
 		prms->dead = 1;
 		return (1);
 	}
 	return (0);
 }
 
-int	check_if_fed(t_philo_prms *prms, int i)
+int	check_if_fed(t_philo_prms *prms)
 {
 	int	nb_philo_fed;
 	int	j;
@@ -128,7 +127,8 @@ void	*batch_routine(void	*args)
 	struct timeval	current_time;
 
 	prms = args;
-	prms->eat == 0;
+	prms->eat = 0;
+	usleep(20);
 	while (prms->dead == 0 && prms->eat == 0)
 	{
 		i = 0;
@@ -137,7 +137,7 @@ void	*batch_routine(void	*args)
 		{
 			if (check_if_dead(prms, i, current_time))
 				break ;
-			if (check_if_fed(prms, i))
+			if (check_if_fed(prms))
 				break ;
 			i++;
 		}

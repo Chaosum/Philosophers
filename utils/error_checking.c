@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_checking.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 16:05:54 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/16 18:04:15 by mservage         ###   ########.fr       */
+/*   Updated: 2021/08/17 17:09:47 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	args_reminder(void)
 
 int	check_philo_arg_value(char **av)
 {
-	char	*arg_check;
 	int		i;
 	int		j;
 	int		error;
