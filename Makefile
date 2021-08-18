@@ -6,7 +6,7 @@ SRCS				= philo.c
 
 SRCS_UTILS			= ${addprefix ${FOLDER_UTILS}/,error_checking.c utils.c memory_utils.c}
 
-SRCS_ROUTINE		= ${addprefix ${FOLDER_ROUTINE}/,routine_init.c routine_eat.c routine_sleep.c routine_think.c}
+SRCS_ROUTINE		= ${addprefix ${FOLDER_ROUTINE}/,routine.c routine_init.c routine_eat.c routine_sleep.c routine_think.c}
 
 OBJS				= ${SRCS:.c=.o} ${SRCS_UTILS:.c=.o} ${SRCS_ROUTINE:.c=.o}
 

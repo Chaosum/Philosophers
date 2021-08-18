@@ -6,7 +6,7 @@
 /*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 16:05:54 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/17 17:09:47 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/19 01:00:53 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	args_reminder(void)
 
 	usage = "|\t## ARGS SHOULD BE AS FOLLOWS ##\n"
 		"|1st arg\t= number_of_philosophers\n"
-		"|2nd arg\t= time_to_die - in  miliseconds\n"
-		"|3rd arg\t= time_to_eat - in miliseconds\n"
-		"|4th arg\t= time_to_sleep - in miliseconds\n"
-		"|5th arg\t= number_of_times_each_philosopher_must_eat(optional)\n";
+		"|2nd arg\t= time_to_die - in  milliseconds\n"
+		"|3rd arg\t= time_to_eat - in milliseconds\n"
+		"|4th arg\t= time_to_sleep - in milliseconds\n"
+		"|5th arg\t= number_of_times_each_philosopher_must_eat [optional]\n";
 	printf("%s", usage);
 }
 

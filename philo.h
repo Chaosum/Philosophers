@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:40:07 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/16 18:19:57 by mservage         ###   ########.fr       */
+/*   Updated: 2021/08/19 00:45:24 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 /* philo.c */
 int	main(int ac, char **av);
-int	philo_error_and_init_params(int ac, t_philo_prms *prms, char **av);
+int	philo_init_params(int ac, t_philo_prms *prms, char **av);
+int	philo_error_params(t_philo_prms *prms);
 
 #endif
