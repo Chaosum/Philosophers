@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 12:41:04 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/19 01:16:18 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/20 20:28:34 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	init_philo_struct(t_philo_prms *prms, int i)
 	temp->philo_nbr = i + 1;
 	temp->prms = prms;
 	temp->current_state = 1;
+	if (prms->nbr_philo == 1)
+		gettimeofday(&prms->philo[i]->last_time_eat, NULL);
 	if (pthread_mutex_init(&(temp->right_fork), NULL) == -1)
 		return (ft_error_display("Error\nMemory issue\n", 1, prms, 1));
 	return (0);
@@ -30,13 +32,15 @@ void	init_philo_fork(t_philo_prms *prms)
 	int	i;
 
 	i = 0;
+	if (prms->nbr_philo == 1)
+		return ;
 	while (i < prms->nbr_philo)
 	{
 		if (i == 0)
 			prms->philo[i]->left_fork
-				= prms->philo[prms->nbr_philo - 1]->left_fork;
+				= &prms->philo[prms->nbr_philo - 1]->right_fork;
 		else
-			prms->philo[i]->left_fork = prms->philo[i - 1]->left_fork;
+			prms->philo[i]->left_fork = &prms->philo[i - 1]->right_fork;
 		i++;
 	}
 }
@@ -72,11 +76,12 @@ int	init_philo(t_philo_prms *prms)
 		i++;
 	}
 	init_philo_fork(prms);
+	pthread_create(&prms->batch, NULL, batch_routine, prms);
 	i = -1;
 	while (++i < prms->nbr_philo)
 		pthread_create(&prms->philo[i]->thread,
 			NULL, ft_routine, prms->philo[i]);
-	batch_routine(prms);
+	pthread_join(prms->batch, NULL);
 	ft_free_everything(prms);
 	return (0);
 }

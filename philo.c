@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:39:44 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/19 00:45:44 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/20 20:01:31 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	philo_init_params(int ac, t_philo_prms *prms, char **av)
 	prms->nb_forks = prms->nbr_philo;
 	prms->philo = NULL;
 	prms->dead = 0;
+	pthread_mutex_init(&prms->mutex_end, NULL);
 	return (philo_error_params(prms));
 }
 
