@@ -6,7 +6,7 @@
 /*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 23:41:27 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/23 12:42:03 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/23 12:52:14 by matthieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@ void	*ft_routine(void *args)
 		if (philo->prms->dead == 0 && philo->current_state == 1
 			&& philo->prms->eat == 0)
 			routine_eat(philo);
-		pthread_mutex_lock(&philo->prms->mutex_end);
-		if (philo->prms->dead == 0 && philo->current_state == 2
+		else if (philo->prms->dead == 0 && philo->current_state == 2
 			&& philo->prms->eat == 0)
 			routine_sleep(philo);
-		pthread_mutex_lock(&philo->prms->mutex_end);
-		if (philo->prms->dead == 0 && philo->current_state == 3
+		else if (philo->prms->dead == 0 && philo->current_state == 3
 			&& philo->prms->eat == 0)
 			routine_think(philo);
 		else
