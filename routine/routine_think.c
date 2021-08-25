@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine_think.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 12:41:38 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/23 12:52:55 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/25 16:12:56 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 void	routine_think(t_philo *philo)
 {
+	pthread_mutex_unlock(&philo->prms->mutex_end);
 	gettimeofday(&philo->timestamp, NULL);
+	pthread_mutex_lock(&philo->prms->mutex_end);
 	if (!philo->prms->dead && !philo->prms->eat)
+	{
+		pthread_mutex_unlock(&philo->prms->mutex_end);
 		printf("|%dms\t|%d\tis thinking\n",
 			ft_get_time(philo->prms, philo->timestamp), philo->philo_nbr);
-	pthread_mutex_unlock(&philo->prms->mutex_end);
+	}
+	else
+		pthread_mutex_unlock(&philo->prms->mutex_end);
 	philo->current_state = 1;
 }

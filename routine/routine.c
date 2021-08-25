@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 23:41:27 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/23 12:52:14 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/25 16:32:24 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	*ft_routine(void *args)
 	philo = args;
 	pthread_detach(philo->thread);
 	routine_think(philo);
-	if (philo->philo_nbr % 2)
-		usleep(2000);
-	while (1)
+	if (philo->philo_nbr % 2 == 0)
+		usleep(20);
+	pthread_mutex_lock(&philo->prms->mutex_end);
+	while (philo->prms->dead == 0 && philo->prms->eat == 0)
 	{
-		pthread_mutex_lock(&philo->prms->mutex_end);
 		if (philo->prms->dead == 0 && philo->current_state == 1
 			&& philo->prms->eat == 0)
 			routine_eat(philo);
@@ -35,7 +35,9 @@ void	*ft_routine(void *args)
 			routine_think(philo);
 		else
 			break ;
+		pthread_mutex_lock(&philo->prms->mutex_end);
 	}
+	pthread_mutex_unlock(&philo->prms->mutex_end);
 	return (NULL);
 }
 
@@ -112,5 +114,6 @@ void	*batch_routine(void	*args)
 		check_if_fed(prms);
 		usleep(2000);
 	}
+	usleep(100);
 	return (NULL);
 }

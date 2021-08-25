@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 16:06:49 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/19 00:51:59 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/25 17:28:22 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int			philo_check_arg(int ac, char **av);
 int			ft_error_display(char *msg, int ret, t_philo_prms *prms, int mutex);
 
 /* memory_utils.c */
+void		ft_usleep(unsigned long int duration);
 void		free_mutex(t_philo **philo);
 void		ft_free_everything(t_philo_prms *prms);
 

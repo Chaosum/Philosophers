@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 12:37:43 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/19 00:52:12 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/25 15:48:31 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_free_everything(t_philo_prms *prms)
 		free(prms->philo[i]);
 		i++;
 	}
+	pthread_mutex_destroy(&prms->mutex_end);
 	free(prms->philo[i]);
 	free(prms->philo);
 	return ;

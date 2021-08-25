@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 16:05:58 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/19 01:08:30 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/25 17:34:43 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,21 @@ void	*ft_calloc(size_t count, size_t size)
 		i++;
 	}
 	return (ptr);
+}
+
+void	ft_usleep(unsigned long int duration)
+{
+	struct timeval		current_time;
+	unsigned long int	end;
+	unsigned long int	current;
+
+	gettimeofday(&current_time, NULL);
+	current = current_time.tv_sec * 1000 + current_time.tv_usec / 1000;
+	end = current + duration;
+	while (current < end)
+	{
+		usleep(1000);
+		gettimeofday(&current_time, NULL);
+		current = current_time.tv_sec * 1000 + current_time.tv_usec / 1000;
+	}
 }

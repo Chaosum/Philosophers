@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine_eat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 12:42:53 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/23 12:49:37 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/25 17:43:19 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,28 @@ void	philo_grab_fork(t_philo *philo)
 
 void	ft_lock_fork(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->prms->mutex_end);
-	if (philo->philo_nbr % 2 && philo->prms->dead == 0)
+	if (philo->philo_nbr % 2)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		philo_grab_fork(philo);
-		pthread_mutex_lock(&philo->right_fork);
-		philo_grab_fork(philo);
 	}
-	else if (philo->philo_nbr % 2 == 0 && philo->prms->dead == 0)
+	else
 	{
-		pthread_mutex_lock(&philo->right_fork);
-		philo_grab_fork(philo);
+		usleep(10);
 		pthread_mutex_lock(philo->left_fork);
 		philo_grab_fork(philo);
 	}
-	pthread_mutex_unlock(&philo->prms->mutex_end);
+	if (philo->philo_nbr % 2)
+	{
+		pthread_mutex_lock(&philo->right_fork);
+		philo_grab_fork(philo);
+	}
+	else
+	{
+		usleep(10);
+		pthread_mutex_lock(&philo->right_fork);
+		philo_grab_fork(philo);
+	}
 }
 
 void	routine_eat(t_philo *philo)
@@ -52,11 +58,15 @@ void	routine_eat(t_philo *philo)
 		philo->nbr_time_eat++;
 	pthread_mutex_lock(&philo->prms->mutex_end);
 	if (!philo->prms->dead && !philo->prms->eat)
+	{
+		pthread_mutex_unlock(&philo->prms->mutex_end);
 		printf("|%dms\t|%d\tis eating\n",
 			ft_get_time(philo->prms, philo->last_time_eat), philo->philo_nbr);
+	}
+	else
+		pthread_mutex_unlock(&philo->prms->mutex_end);
 	philo->fork = 0;
-	pthread_mutex_unlock(&philo->prms->mutex_end);
-	usleep(philo->prms->time_to_eat * 1000);
+	ft_usleep(philo->prms->time_to_eat);
 	philo->current_state = 2;
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(&philo->right_fork);
