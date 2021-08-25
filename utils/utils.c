@@ -6,7 +6,7 @@
 /*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 16:05:58 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/25 17:34:43 by mservage         ###   ########.fr       */
+/*   Updated: 2021/08/25 19:10:13 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	ft_usleep(unsigned long int duration)
 	gettimeofday(&current_time, NULL);
 	current = current_time.tv_sec * 1000 + current_time.tv_usec / 1000;
 	end = current + duration;
-	while (current < end)
+	while (current <= end)
 	{
-		usleep(1000);
+		usleep(100);
 		gettimeofday(&current_time, NULL);
 		current = current_time.tv_sec * 1000 + current_time.tv_usec / 1000;
 	}

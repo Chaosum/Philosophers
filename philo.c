@@ -6,7 +6,7 @@
 /*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 14:39:44 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/20 20:01:31 by mservage         ###   ########.fr       */
+/*   Updated: 2021/08/25 19:02:15 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	philo_error_params(t_philo_prms *prms)
 	int	error;
 
 	error = 0;
-	if (prms->nbr_philo == -1)
+	if (prms->nbr_philo <= 0)
 		ft_params_error("Error\nWrong philosophers number\n", &error);
-	if (prms->time_to_die == -1)
+	if (prms->time_to_die < 60)
 		ft_params_error("Error\nWrong time_to_die value\n", &error);
-	if (prms->time_to_eat == -1)
+	if (prms->time_to_eat < 60)
 		ft_params_error("Error\nWrong time_to_eat value\n", &error);
-	if (prms->time_to_sleep == -1)
+	if (prms->time_to_sleep < 60)
 		ft_params_error("Error\nWrong time_to_sleep value\n", &error);
 	if (prms->nbr_time_philo_must_eat == -1)
 		ft_params_error("Error\nWrong time philo must eat value\n", &error);

@@ -6,7 +6,7 @@
 /*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 23:41:27 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/25 16:32:24 by mservage         ###   ########.fr       */
+/*   Updated: 2021/08/25 19:06:58 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_routine(void *args)
 	pthread_detach(philo->thread);
 	routine_think(philo);
 	if (philo->philo_nbr % 2 == 0)
-		usleep(20);
+		usleep(200);
 	pthread_mutex_lock(&philo->prms->mutex_end);
 	while (philo->prms->dead == 0 && philo->prms->eat == 0)
 	{
@@ -85,7 +85,6 @@ int	check_if_fed(t_philo_prms *prms)
 			pthread_mutex_lock(&prms->mutex_end);
 			prms->eat = 1;
 			pthread_mutex_unlock(&prms->mutex_end);
-			printf("Tout le monde il a bien manger\n");
 			return (1);
 		}
 	}
@@ -112,7 +111,7 @@ void	*batch_routine(void	*args)
 			i++;
 		}
 		check_if_fed(prms);
-		usleep(2000);
+		usleep(100);
 	}
 	usleep(100);
 	return (NULL);

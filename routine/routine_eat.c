@@ -6,7 +6,7 @@
 /*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 12:42:53 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/25 17:43:19 by mservage         ###   ########.fr       */
+/*   Updated: 2021/08/25 19:00:05 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 void	philo_grab_fork(t_philo *philo)
 {
-	gettimeofday(&philo->timestamp, NULL);
+	pthread_mutex_lock(&philo->prms->mutex_end);
 	if (!philo->prms->dead && !philo->prms->eat)
+	{	
+		gettimeofday(&philo->timestamp, NULL);
 		printf("|%dms\t|%d\thas taken a fork\n",
 			ft_get_time(philo->prms, philo->timestamp), philo->philo_nbr);
+	}
+	pthread_mutex_unlock(&philo->prms->mutex_end);
 	philo->fork++;
 }
 
@@ -53,18 +57,16 @@ void	routine_eat(t_philo *philo)
 	if (philo->prms->nbr_philo == 1)
 		return ;
 	ft_lock_fork(philo);
-	gettimeofday(&philo->last_time_eat, NULL);
-	if (philo->prms->nbr_time_philo_must_eat)
-		philo->nbr_time_eat++;
 	pthread_mutex_lock(&philo->prms->mutex_end);
 	if (!philo->prms->dead && !philo->prms->eat)
 	{
-		pthread_mutex_unlock(&philo->prms->mutex_end);
+		gettimeofday(&philo->last_time_eat, NULL);
+		if (philo->prms->nbr_time_philo_must_eat)
+			philo->nbr_time_eat++;
 		printf("|%dms\t|%d\tis eating\n",
 			ft_get_time(philo->prms, philo->last_time_eat), philo->philo_nbr);
 	}
-	else
-		pthread_mutex_unlock(&philo->prms->mutex_end);
+	pthread_mutex_unlock(&philo->prms->mutex_end);
 	philo->fork = 0;
 	ft_usleep(philo->prms->time_to_eat);
 	philo->current_state = 2;
