@@ -20,15 +20,12 @@ CFLAGS				=  -Wall -Wextra -Werror #-g3 -fsanitize=address
 
 all:		${NAME}
 
-%.o:		%.c
-			${CC} ${CFLAGS} -o $@ -c $<
+%.o:		%.c ${INCLUDES}
+			@${CC} ${CFLAGS} -o $@ -c $<
 
 ${NAME}:	${OBJS}
-				gcc ${CFLAGS} -o ${NAME} ${OBJS} -lpthread
+				@gcc ${CFLAGS} -o ${NAME} ${OBJS} -lpthread
 				@echo compilation complete !
-			
-
-${OBJS}:	${INCLUDES}
 
 clean:
 			@rm -f *.o ${FOLDER_UTILS}/*.o ${FOLDER_ROUTINE}/*.o

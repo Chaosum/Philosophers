@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matthieu <matthieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 12:35:21 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/19 01:09:54 by matthieu         ###   ########.fr       */
+/*   Updated: 2021/08/28 10:50:56 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	routine_think(t_philo *philo);
 void	*ft_routine(void *args);
 int		check_if_dead(t_philo_prms *prms, int i, struct timeval current_time);
 int		check_if_fed(t_philo_prms *prms);
-void	*batch_routine(void	*args);
+void	*batch_routine(void *args);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mservage <mservage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 23:41:27 by matthieu          #+#    #+#             */
-/*   Updated: 2021/08/25 19:06:58 by mservage         ###   ########.fr       */
+/*   Updated: 2021/08/28 10:50:38 by mservage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	check_if_fed(t_philo_prms *prms)
 	return (0);
 }
 
-void	*batch_routine(void	*args)
+void	*batch_routine(void *args)
 {
 	t_philo_prms	*prms;
 	int				i;
